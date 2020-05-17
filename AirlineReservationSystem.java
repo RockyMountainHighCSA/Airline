@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class AirlineReservationSystem {
 	
-	boolean[] seating = new boolean[11]; /* create 10 seat numbers (array[0] will not be used). Empty seat indicated by false*/
-    Scanner input = new Scanner(System.in);
+	static boolean[] seating = new boolean[11]; /* create 10 seat numbers (array[0] will not be used). Empty seat indicated by false*/
+    static Scanner input = new Scanner(System.in);
+    
+    
 
-    public void start()
+    public static void start()
     {       
         while ( true )
         {
@@ -13,7 +15,7 @@ public class AirlineReservationSystem {
         }   
     }
 
-    public void makeReservation()
+    public static void makeReservation()
     {
         System.out.println("Please type 1 for First Class or 2 for Economy: ");
         int section = input.nextInt();
@@ -27,7 +29,7 @@ public class AirlineReservationSystem {
         }
     }
 
-    public void firstClassSeat() // assign a first class seat
+    public static void firstClassSeat() // assign a first class seat
     {
         for ( int count = 1; count <= 5; count++ )
         {
@@ -37,9 +39,9 @@ public class AirlineReservationSystem {
                 System.out.printf("First Class. Seat# %d\n", count);
                 break;
             }
-            else if ( seating[5] == true ) // If seating[5] is true then first class is fully booked
+            if ( seating[5] == true ) // If seating[5] is true then first class is fully booked
             {
-                if ( seating[10] == true) // If seating[10] is true then economy (and therefore whole flight) is fully booked
+            if ( seating[10] == true) // If seating[10] is true then economy (and therefore whole flight) is fully booked
                 {
                     System.out.println("Sorry, flight fully booked. Next flight is in 3 hours.");
                 }
@@ -59,10 +61,11 @@ public class AirlineReservationSystem {
                     }
                 }
             }
-        }
+        } System.out.println("Your flight leaves in one hour. Thank you for flying at DIA!");
+         System.exit(0);
     }   
 
-    public void economySeat() // assign an economy seat
+    public static void economySeat() // assign an economy seat
     {
         for ( int count = 6; count <= 10; count++ )
         {
@@ -97,11 +100,19 @@ public class AirlineReservationSystem {
             }
         }
     }
-}
+
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+	System.out.println("Welcome to DIA");
+	System.out.println("Would you like to book a flight? Enter 1 for yes, 2 for no.");
+	
+	Scanner choice = new Scanner(System.in);
+		int Choice = choice.nextInt();
+		start();
+		
 	}
-
+	
 }
+
+
